@@ -18,9 +18,9 @@ class Mueble extends CI_Model {
 
     public function get_one($id) {
 
-        $sql = "SELECT l.*
-                FROM mueble l
-                WHERE l.id_mueble= $id LIMIT 1";
+        $sql = "SELECT m.*
+                FROM mueble m
+                WHERE m.id_mueble= $id LIMIT 1";
         $query = $this->db->query($sql);
         return $query->row_array();
     }
