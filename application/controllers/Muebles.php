@@ -11,7 +11,7 @@ class Muebles extends MY_Controller {
         //$this->db->db_select($database);
 
         $this->load->model("mueble");
-   
+        $this->load->model("puerta");
     }
 
     protected function middleware() {
@@ -29,17 +29,32 @@ class Muebles extends MY_Controller {
     public function index_get() {
         $datos = $this->mueble->get_all();
         $this->response($datos);
-    } 
+    }
+
+    public function get_mueble_con_puertas_get() {
+        $muebles = $this->mueble->get_all();
+
+
+        foreach ($muebles as &$mueble) {
+
+            $mueble['puertas'] = $this->puerta->get_puertas_mueble($mueble['id_mueble']);
+            $mueble['test'] = 'hola mundo';
+        }
+        unset($mueble);
+
+
+        $this->response($muebles);
+    }
 
     public function get_mueble_get($id) {
-        $mueble = $this->mueble->get_one($id);        
+        $mueble = $this->mueble->get_one($id);
         $this->response(["mueble" => $mueble]);
-    }  
+    }
 
     public function del_mueble_post($id) {
         $count = $this->mueble->del_one($id);
         $this->response(array("count" => $count));
-    }  
+    }
 
     public function create_mueble_post() {
         $mueble = $this->post("mueble");

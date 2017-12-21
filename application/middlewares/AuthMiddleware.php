@@ -32,7 +32,8 @@ class AuthMiddleware {
         //$this->controller->response("headers" => $headers,"server"=>$server], REST_Controller::HTTP_UNAUTHORIZED);
         //if (!array_key_exists('X-Authorization', $headers)) {
         if (!array_key_exists('Authorization', $headers)) {
-            $this->controller->response(["error" => ["message" => "Inicie sesión para acceder a los recursos del sistema"]], REST_Controller::HTTP_UNAUTHORIZED);
+            //$this->controller->response(["error" => ["message" => "Inicie sesión para acceder a los recursos del sistema"]], REST_Controller::HTTP_UNAUTHORIZED);
+            return;
         }
 
         //$authorization = $headers['X-Authorization'];

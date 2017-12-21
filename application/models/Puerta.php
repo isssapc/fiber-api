@@ -11,7 +11,17 @@ class Puerta extends CI_Model {
     public function get_all() {
 
         $sql = "SELECT *
-                FROM puerta";
+                FROM puerta_mueble";
+
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function get_puertas_mueble($id_mueble) {
+
+        $sql = "SELECT *
+                FROM puerta_mueble
+                WHERE id_mueble= $id_mueble";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -26,12 +36,12 @@ class Puerta extends CI_Model {
     }
 
     public function del_one($id) {
-     
+
         $this->db->where('id_puerta', $id);
         $this->db->delete('puerta');
         $count = $this->db->affected_rows();
         return $count;
-    } 
+    }
 
     public function create_one($puerta) {
 
