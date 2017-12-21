@@ -28,9 +28,9 @@ class Puerta extends CI_Model {
 
     public function get_one($id) {
 
-        $sql = "SELECT l.*
-                FROM puerta l
-                WHERE l.id_puerta= $id LIMIT 1";
+        $sql = "SELECT p.*
+                FROM puerta_mueble p
+                WHERE p.id_puerta_mueble= $id LIMIT 1";
         $query = $this->db->query($sql);
         return $query->row_array();
     }
@@ -48,7 +48,7 @@ class Puerta extends CI_Model {
         $now = date("Y-m-d H:i:s");
         $puerta["fecha"] = $now;
 
-        $this->db->insert('puerta', $puerta);
+        $this->db->insert('puerta_mueble', $puerta);
         $id_puerta = $this->db->insert_id();
 
         $puerta = $this->get_one($id_puerta);
@@ -57,8 +57,8 @@ class Puerta extends CI_Model {
 
     public function update_one($id, $props) {
 
-        $where = "id_puerta = $id";
-        $sql = $this->db->update_string('puerta', $props, $where);
+        $where = "id_puerta_mueble = $id";
+        $sql = $this->db->update_string('puerta_mueble', $props, $where);
         $this->db->query($sql);
 
         $puerta = $this->get_one($id);

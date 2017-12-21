@@ -18,9 +18,9 @@ class Proyecto extends CI_Model {
 
     public function get_one($id) {
 
-        $sql = "SELECT l.*
-                FROM proyecto l
-                WHERE l.id_proyecto= $id LIMIT 1";
+        $sql = "SELECT p.*
+                FROM proyecto p
+                WHERE p.id_proyecto= $id LIMIT 1";
         $query = $this->db->query($sql);
         return $query->row_array();
     }
