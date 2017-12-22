@@ -19,7 +19,7 @@ class Puerta extends CI_Model {
 
     public function get_puertas_mueble($id_mueble) {
 
-        $sql = "SELECT *
+        $sql = "SELECT *, 0 AS deshabilitada, null AS linea_puerta
                 FROM puerta_mueble
                 WHERE id_mueble= $id_mueble";
         $query = $this->db->query($sql);
