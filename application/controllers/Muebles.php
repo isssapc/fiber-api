@@ -31,14 +31,14 @@ class Muebles extends MY_Controller {
         $this->response($datos);
     }
 
-    public function get_mueble_con_puertas_get() {
+    public function get_muebles_con_puertas_get() {
         $muebles = $this->mueble->get_all();
 
 
         foreach ($muebles as &$mueble) {
 
             $mueble['puertas'] = $this->puerta->get_puertas_mueble($mueble['id_mueble']);
-            $mueble['test'] = 'hola mundo';
+           
         }
         unset($mueble);
 
