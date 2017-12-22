@@ -37,8 +37,8 @@ class Puerta extends CI_Model {
 
     public function del_one($id) {
 
-        $this->db->where('id_puerta', $id);
-        $this->db->delete('puerta');
+        $this->db->where('id_puerta_mueble', $id);
+        $this->db->delete('puerta_mueble');
         $count = $this->db->affected_rows();
         return $count;
     }
